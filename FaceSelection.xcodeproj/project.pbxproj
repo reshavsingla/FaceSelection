@@ -16,6 +16,7 @@
 		68D6CE4520927B410009EFD3 /* FaceSelectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6CE4420927B410009EFD3 /* FaceSelectionTests.m */; };
 		68D6CE5020927B410009EFD3 /* FaceSelectionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D6CE4F20927B410009EFD3 /* FaceSelectionUITests.m */; };
 		73B0BBEE7B16C5A8500CB54C /* Pods_FaceSelection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F4BA9B2504B260A1BB2E29 /* Pods_FaceSelection.framework */; };
+		84D4F8AC20B383170063063F /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D4F8AB20B383170063063F /* CustomButton.m */; };
 		B56E47280AE114781C05A96C /* Pods_FaceSelectionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A50698509C397C76E4B630F /* Pods_FaceSelectionTests.framework */; };
 		EC2E105213C4886CF8A3BD82 /* Pods_FaceSelectionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8C6A7A9681BA57A28F04D3 /* Pods_FaceSelectionUITests.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,8 @@
 		68D6CE5120927B410009EFD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76A8B164BB152C0551E04780 /* Pods-FaceSelectionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceSelectionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FaceSelectionUITests/Pods-FaceSelectionUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7B19A795E01DD03D137CCF2A /* Pods-FaceSelection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceSelection.release.xcconfig"; path = "Pods/Target Support Files/Pods-FaceSelection/Pods-FaceSelection.release.xcconfig"; sourceTree = "<group>"; };
+		84D4F8AA20B383170063063F /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		84D4F8AB20B383170063063F /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		DC8C6A7A9681BA57A28F04D3 /* Pods_FaceSelectionUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaceSelectionUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,6 +143,8 @@
 				68D6CE3620927B410009EFD3 /* LaunchScreen.storyboard */,
 				68D6CE3920927B410009EFD3 /* Info.plist */,
 				68D6CE3A20927B410009EFD3 /* main.m */,
+				84D4F8AA20B383170063063F /* CustomButton.h */,
+				84D4F8AB20B383170063063F /* CustomButton.m */,
 			);
 			path = FaceSelection;
 			sourceTree = "<group>";
@@ -184,7 +189,6 @@
 				68D6CE2520927B3D0009EFD3 /* Frameworks */,
 				68D6CE2620927B3D0009EFD3 /* Resources */,
 				DCB57A19349D322CD7456AE1 /* [CP] Embed Pods Frameworks */,
-				D77FA933026B4A3D78CB12AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,8 +207,6 @@
 				68D6CE3C20927B410009EFD3 /* Sources */,
 				68D6CE3D20927B410009EFD3 /* Frameworks */,
 				68D6CE3E20927B410009EFD3 /* Resources */,
-				F4D15668D6647D582E1AD081 /* [CP] Embed Pods Frameworks */,
-				3580B3AE193B5DDB9E6065A1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,8 +226,6 @@
 				68D6CE4720927B410009EFD3 /* Sources */,
 				68D6CE4820927B410009EFD3 /* Frameworks */,
 				68D6CE4920927B410009EFD3 /* Resources */,
-				948798A7753C0BEB2724E7DD /* [CP] Embed Pods Frameworks */,
-				9B5752B472FE570212F3978C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -307,21 +307,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3580B3AE193B5DDB9E6065A1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FaceSelectionTests/Pods-FaceSelectionTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		53816B3B5DD682A1EA2B21B1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,21 +323,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		948798A7753C0BEB2724E7DD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FaceSelectionUITests/Pods-FaceSelectionUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9866D971495876AABBE8AA4A /* [CP] Check Pods Manifest.lock */ = {
@@ -373,21 +343,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9B5752B472FE570212F3978C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FaceSelectionUITests/Pods-FaceSelectionUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A5C354BB8C970DFF5257F0D9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -406,49 +361,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D77FA933026B4A3D78CB12AF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FaceSelection/Pods-FaceSelection-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DCB57A19349D322CD7456AE1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FaceSelection/Pods-FaceSelection-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FaceSelection/Pods-FaceSelection-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F4D15668D6647D582E1AD081 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FaceSelectionTests/Pods-FaceSelectionTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -458,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D4F8AC20B383170063063F /* CustomButton.m in Sources */,
 				68D6CE3020927B3D0009EFD3 /* ViewController.m in Sources */,
 				68D6CE3B20927B410009EFD3 /* main.m in Sources */,
 				68D6CE2D20927B3D0009EFD3 /* AppDelegate.m in Sources */,

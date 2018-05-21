@@ -6,6 +6,7 @@ target 'FaceSelection' do
   use_frameworks!
 
   # Pods for FaceSelection
+  pod 'AFNetworking', '~> 3.0'
 
   target 'FaceSelectionTests' do
     inherit! :search_paths
