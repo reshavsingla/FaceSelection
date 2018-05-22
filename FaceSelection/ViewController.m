@@ -18,6 +18,7 @@
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 @property (nonatomic, copy) NSArray *jsonFaceData;
+@property (nonatomic, copy) NSString *lastSelectedFaceId;
 @end
 
 @implementation ViewController
@@ -30,6 +31,7 @@
     [self.loadingIndicator startAnimating];
     self.imageView.image = nil;
     self.textView.text = nil;
+    self.lastSelectedFaceId = nil;
     
     // Image URL: https://s3-us-west-2.amazonaws.com/precious-interview/ios-face-selection/family.jpg
     // JSON URL: https://s3-us-west-2.amazonaws.com/precious-interview/ios-face-selection/family_faces.json
@@ -80,7 +82,6 @@
 -(void)setBoundingBoxes{
     //Loop through json data and draw bounding boxes for each face
     for(NSDictionary *item in self.jsonFaceData) {
-        NSLog(@"Item: %@", item);
         [self drawBoundingBox:item];
     }
 }
@@ -136,9 +137,9 @@
     }];
     
     self.textView.text = nil;
-
+    
     //If the touch is not from outside the bounding box
-    if(boundingBox.class != [UITapGestureRecognizer class]){
+    if(boundingBox.class != [UITapGestureRecognizer class] && ![self.lastSelectedFaceId isEqualToString:boundingBox.stringTag]){
         //Increase the border size
         boundingBox.layer.borderWidth = 5.0f;
         
@@ -189,6 +190,10 @@
             [circleLayer setFillColor:[[UIColor greenColor] CGColor]];
             [[self.view layer] addSublayer:circleLayer];
         }
+        
+        self.lastSelectedFaceId = boundingBox.stringTag;
+    }else{
+        self.lastSelectedFaceId = nil;
     }
 }
 - (void)didReceiveMemoryWarning {
@@ -219,6 +224,17 @@
      {
          //reset bounding boxes after rotation
          [self setBoundingBoxes];
+         if(self.lastSelectedFaceId){
+             for (UIView* subview in self.view.subviews) {
+                 if ([subview isKindOfClass:[CustomButton class]]) {
+                     CustomButton *boundingBox =(CustomButton *)subview;
+                     if([boundingBox.stringTag isEqualToString:self.lastSelectedFaceId]){
+                         self.lastSelectedFaceId = nil;
+                         [self buttonSelected:boundingBox];
+                     }
+                 }
+             }
+         }
      }];
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
